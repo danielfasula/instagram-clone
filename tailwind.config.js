@@ -12,7 +12,7 @@ module.exports = {
                 medium: '#005c98'
             },
             black: {
-                light: '#005c98',
+                light: '#262626',
                 faded: '#00000059'
             },
             gray: {
@@ -26,10 +26,3 @@ module.exports = {
         }
     }
 }
-
-// TODO: add to tailwind config
-// text-red-primary -> hex values
-// text-blue-medium -> hex values
-// text-gray-base -> hex values
-// border-gray-primary -> hex values
-// bg-blue-medium -> hex values
