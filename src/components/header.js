@@ -1,12 +1,13 @@
 import { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import FirebaseContext from '../context/firebase'
-// import UserContext from '../context/user'
+import UserContext from '../context/user'
 import * as ROUTES from '../constants/routes'
 
 export default function Header() {
     const { firebase } = useContext(FirebaseContext)
-    // const { user } = useContext(UserContext)
+    const { user } = useContext(UserContext)
+    console.log(user);
 
     return (
         <header className="h-16 bg-white border-b border-gray-primary mb-8">
@@ -21,7 +22,7 @@ export default function Header() {
                     </div>
                     <div className="text-gray-700 text-center flex items-center align-items">
                         {/* NOTE figure out whats going on with useAuthListener!!! */}
-                        {/* {user ? (
+                        {user ? (
                             <>
                                 <Link to={ROUTES.DASHBOARD} aria-label="Dashboard" >
                                     <svg
@@ -61,24 +62,24 @@ export default function Header() {
                                     </svg>
                                 </button>
                                 <div className="flex items-center cursor-pointer">
-                                    <Link to={`/p/${user.displayName}`}>
+                                    <Link to={`/p/${user.user.displayName}`}>
                                         <img
                                             className="rounded-full h-8 w-8 flex"
-                                            src={`/images/avatars/${user.displayName}.jpg`}
-                                            alt={`${user.displayName} profile`} />
+                                            src={`/images/avatars/${user.user.displayName}.jpg`}
+                                            alt={`${user.user.displayName} profile`} />
                                     </Link>
                                 </div>
                             </>
                         ) : (
-                            <> */}
-                        <Link to={ROUTES.LOGIN}>
-                            <button type="button" className="bg-blue-medium font-bold text-sm rounded text-white w-20 h-8">Log In</button>
-                        </Link>
-                        <Link to={ROUTES.SIGN_UP}>
-                            <button type="button" className="font-bold text-sm rounded text-blue-medium w-20 h-8">Sign Up</button>
-                        </Link>
-                        {/* </>
-                        )} */}
+                            <>
+                                <Link to={ROUTES.LOGIN}>
+                                    <button type="button" className="bg-blue-medium font-bold text-sm rounded text-white w-20 h-8">Log In</button>
+                                </Link>
+                                <Link to={ROUTES.SIGN_UP}>
+                                    <button type="button" className="font-bold text-sm rounded text-blue-medium w-20 h-8">Sign Up</button>
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

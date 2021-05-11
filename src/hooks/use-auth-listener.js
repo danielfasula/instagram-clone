@@ -4,7 +4,17 @@ import FirebaseContext from '../context/firebase'
 export default function useAuthListener() {
     // NOTE
     // Uncaught SyntaxError: Unexpected token u in JSON at position 0
-    const [user, setUser] = useState(JSON.parse(localStorage.getItem('authUser')))
+    const checkLocalStorage = () => {
+        const authUser = JSON.parse(localStorage.getItem('authUser'))
+        if (authUser !== {}) {
+            return ''
+        } else {
+            return authUser
+        }
+    }
+
+    const [user, setUser] = useState(checkLocalStorage)
+    // JSON.parse(localStorage.getItem('authUser'))
     const { firebase } = useContext(FirebaseContext)
 
     useEffect(() => {
